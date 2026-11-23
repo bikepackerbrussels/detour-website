@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --paper: #f7f6f2;
+  --ink: #171715;
+  --muted: #77756f;
+  --line: #dedbd3;
+  --accent: #c8d9a7;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  width: min(100% - 48px, 1120px);
+  margin: 0 auto;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(46px, 8vw, 92px) 0 clamp(38px, 6vw, 68px);
+}
+
+.brand {
+  display: block;
+  width: min(390px, 72vw);
+}
+
+.brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.intro {
+  max-width: 790px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.language-block { margin: 0 0 36px; }
+
+.language-label {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .19em;
+}
+
+h1, h2 {
+  max-width: 700px;
+  margin: 0 auto 15px;
+  font-size: clamp(22px, 3.1vw, 34px);
+  line-height: 1.17;
+  letter-spacing: -.045em;
+  font-weight: 500;
+}
+
+.language-block > p:last-child {
+  max-width: 710px;
+  margin: 0 auto;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #4e4c47;
+}
+
+.coming-soon {
+  margin: 46px 0 70px;
+  font-size: 10px;
+  line-height: 1.6;
+  font-weight: 700;
+  letter-spacing: .17em;
+}
+
+.coming-soon span { padding: 0 7px; color: #aaa69d; }
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(24px, 5vw, 72px);
+  row-gap: 62px;
+  padding: 0 0 100px;
+}
+
+.partner {
+  min-width: 0;
+  text-align: center;
+}
+
+.partner-logo {
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 22px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.partner-logo img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.partner:nth-child(2) .partner-logo img { max-width: 180px; }
+.partner:nth-child(3) .partner-logo img { max-width: 112px; }
+.partner:nth-child(5) .partner-logo img { max-width: 220px; }
+.partner:nth-child(6) .partner-logo img { max-width: 230px; }
+.partner:nth-child(7) .partner-logo img { max-width: 245px; }
+
+.cobble-mark {
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+
+.partner h3 {
+  margin: 0 0 9px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.partner > p {
+  min-height: 48px;
+  max-width: 280px;
+  margin: 0 auto 9px;
+  color: #5c5a55;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.website-link {
+  display: inline-block;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.website-link span { margin-left: 3px; color: var(--muted); }
+
+footer {
+  background: #e9e7df;
+  padding: 35px 24px 40px;
+}
+
+.footer-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footer-inner > div:first-child { max-width: 490px; }
+
+.footer-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.footer-inner p:not(.footer-title) {
+  margin: 0;
+  color: #5c5a55;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.footer-contact { min-width: 180px; }
+.footer-contact a {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 12px;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  main { width: min(100% - 36px, 560px); }
+  .partners { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; padding-bottom: 68px; }
+  .partner-logo { height: 90px; margin-bottom: 17px; }
+  .partner > p { min-height: 62px; font-size: 12px; }
+  .coming-soon { margin: 38px 0 55px; font-size: 9px; }
+}
+
+@media (max-width: 430px) {
+  main { width: calc(100% - 32px); }
+  .partners { column-gap: 16px; row-gap: 42px; }
+  .partner h3 { font-size: 15px; }
+  .partner > p { font-size: 11px; }
+  .website-link { font-size: 10px; }
+  .footer-inner { flex-direction: column; gap: 22px; }
+}
