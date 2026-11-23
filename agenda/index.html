@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agenda | Détour Brussels</title>
+
+  <!-- FullCalendar -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.5/skeleton.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.5/themes/monarch/theme.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      background: #f7f6f2;
+      color: #202820;
+      font-family: Arial, sans-serif;
+    }
+
+    .top {
+      background: #202e27;
+      color: white;
+      padding: 35px 20px;
+      text-align: center;
+    }
+
+    .top a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 4px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .intro {
+      max-width: 850px;
+      margin: 65px auto 35px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .intro h1 {
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .intro p {
+      color: #666;
+      line-height: 1.7;
+    }
+
+    .agenda-container {
+      max-width: 1100px;
+      margin: 0 auto 80px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+    }
+
+    #calendar {
+      min-height: 500px;
+    }
+
+    /* Customisation du calendrier */
+    .fc {
+      --fc-border-color: #e7e5df;
+      --fc-page-bg-color: #fff;
+      --fc-today-bg-color: #eef2e9;
+      --fc-neutral-bg-color: #f7f6f2;
+      color: #202820;
+    }
+
+    .fc .fc-toolbar-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .fc .fc-button-primary {
+      background: #344b3b;
+      border-color: #344b3b;
+      border-radius: 5px;
+    }
+
+    .fc .fc-button-primary:hover,
+    .fc .fc-button-primary:focus {
+      background: #526b50;
+      border-color: #526b50;
+    }
+
+    .fc .fc-daygrid-day-number {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .fc .fc-col-header-cell-cushion {
+      color: #555;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .fc .fc-event {
+      border: none;
+      border-radius: 4px;
+      padding: 3px 5px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #e9e7df;
+      padding: 35px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .intro {
+        margin-top: 40px;
+      }
+
+      .intro h1 {
+        font-size: 29px;
+      }
+
+      .agenda-container {
+        padding: 12px;
+        margin: 0 10px 50px;
+      }
+
+      .fc .fc-toolbar {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .fc .fc-toolbar-title {
+        font-size: 18px;
+      }
+    }
+  </style>
+
+  <!-- FullCalendar scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.5/all/global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/google-calendar@7.1.5/global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.5/themes/monarch/global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@7.1.5/locales-all/global.js"></script>
+</head>
+
+<body>
+
+  <header class="top">
+    <a href="/">DÉTOUR</a>
+  </header>
+
+  <section class="intro">
+    <h1>Discover what's happening at Détour</h1>
+    <p>
+      Bike rides, workshops, guided tours, cultural activities
+      and events organised by our Brussels partners.
+    </p>
+  </section>
+
+  <section class="agenda-container">
+    <div id="calendar"></div>
+  </section>
+
+  <footer>
+    <strong>Détour Brussels</strong>
+    <p>Rue de Flandre 85 · 1000 Brussels</p>
+    <a href="mailto:hello@detour.brussels">
+      hello@detour.brussels
+    </a>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const calendarEl = document.getElementById("calendar");
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+
+        themeSystem: "monarch",
+
+        locale: "fr",
+        timeZone: "Europe/Brussels",
+        firstDay: 1,
+
+        initialView: "dayGridMonth",
+        height: "auto",
+        dayMaxEvents: true,
+
+        headerToolbar: {
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,listMonth"
+        },
+
+        googleCalendarApiKey: "YOUR_GOOGLE_API_KEY",
+
+        eventSources: [
+
+          {
+            googleCalendarId: "BIKE_PACKER_CALENDAR_ID",
+            color: "#526b50",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "CACTUS_CALENDAR_ID",
+            color: "#bd805b",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "CYCLO_CALENDAR_ID",
+            color: "#667d91",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "MONKEY_DONKEY_CALENDAR_ID",
+            color: "#b6a16d",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "BAZAAR_CALENDAR_ID",
+            color: "#a46e80",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "COBBLE_CALENDAR_ID",
+            color: "#777777",
+            textColor: "#ffffff"
+          },
+
+          {
+            googleCalendarId: "BRIGADE_CALENDAR_ID",
+            color: "#a57b52",
+            textColor: "#ffffff"
+          }
+
+        ]
+
+      });
+
+      calendar.render();
+
+    });
+  </script>
+
+</body>
+</html>
